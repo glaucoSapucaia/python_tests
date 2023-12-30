@@ -1,5 +1,20 @@
+try:
+    import sys
+    import os
+
+    sys.path.append(
+        os.path.abspath(
+            os.path.join(
+                os.path.dirname(__file__),
+                '../src'
+            )
+        )
+    )
+except:
+    raise
+
 import unittest
-from calculator import soma
+from calculator import soma # type: ignore
 
 class TestCalculator(unittest.TestCase):
     def test_soma_5_e_5_deve_retornar_10(self):
@@ -37,4 +52,5 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(AssertionError):
             soma(20, '20')
 
-unittest.main(verbosity=2)
+if __name__ == '__main__':
+    unittest.main(verbosity=2)

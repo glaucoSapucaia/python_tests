@@ -1,6 +1,21 @@
+try:
+    import sys
+    import os
+
+    sys.path.append(
+        os.path.abspath(
+            os.path.join(
+                os.path.dirname(__file__),
+                '../src'
+            )
+        )
+    )
+except:
+    raise
+
 import unittest
 from unittest.mock import patch
-from pessoa import Pessoa
+from pessoa import Pessoa # type: ignore
 
 class TestPessoa(unittest.TestCase):
     def setUp(self):

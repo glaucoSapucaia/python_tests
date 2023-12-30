@@ -10,8 +10,23 @@ Green
 Refactor
 3. MELHORAR o código.
 '''
+try:
+    import sys
+    import os
+
+    sys.path.append(
+        os.path.abspath(
+            os.path.join(
+                os.path.dirname(__file__),
+                '../src'
+            )
+        )
+    )
+except:
+    raise
+
 import unittest
-from bacon import _bacon
+from bacon import _bacon # type: ignore
 
 class TestBacon(unittest.TestCase):
     def test_bacon_levanta_assertion_error_se_nao_receber_int(self):
@@ -46,4 +61,5 @@ class TestBacon(unittest.TestCase):
             with self.subTest(entrada=entrada, saida=saida):
                 self.assertEqual(_bacon(entrada), saida, msg=f'{entrada} não retornou {saida}')
 
-unittest.main(verbosity=2)
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
